@@ -6,18 +6,18 @@ import BasicInfo from './BasicInfo.js';
 import OtherInfo from './OtherInfo.js';
 
 
-function Home({signer, address, balanceOf, allowance, getCurrentTime, getBalance, totalDeposits, totalWithdraws, usersInfo, contract1, contract2, contract1_addr, contract2_addr}) {
+function Home({signer, address, loadWeb3Modal, usdtBalanceOf, usdtAllowance, e2eBalanceOf, e2eAllowance, getCurrentTime, totalInfo, totalRaffleUsers, depositAddrs, getBalance, totalDeposits, totalWithdraws, usersInfo, contract1, contract2, contract3, contract4, contract1_addr, contract2_addr, contract3_addr, contract4_addr}) {
 
   const [currentTime, setCurrentTime] = useState(new Date().getTime());
 
   useEffect(() => {
     const interval = setInterval(() => {
           setCurrentTime(new Date().getTime());
-      }, 1000)
+      }, 60000)
 
       return () => clearInterval(interval)
   }, [])
- 
+
   return (
     <>
       <div className="">
@@ -27,31 +27,49 @@ function Home({signer, address, balanceOf, allowance, getCurrentTime, getBalance
               currentTime={currentTime} 
               signer={signer} 
               address={address} 
-              balanceOf={balanceOf} 
-              allowance={allowance} 
+              usdtBalanceOf={usdtBalanceOf} 
+              usdtAllowance={usdtAllowance} 
+              e2eBalanceOf={e2eBalanceOf} 
+              e2eAllowance={e2eAllowance} 
+              totalInfo={totalInfo} 
+              totalRaffleUsers={totalRaffleUsers} 
+              depositAddrs={depositAddrs} 
               getBalance={getBalance} 
               totalDeposits={totalDeposits} 
               totalWithdraws={totalWithdraws} 
               usersInfo={usersInfo} 
               contract1={contract1} 
               contract2={contract2} 
+              contract3={contract3} 
+              contract4={contract4} 
               contract1_addr={contract1_addr} 
-              contract2_addr={contract2_addr}
+              contract2_addr={contract2_addr} 
+              contract3_addr={contract3_addr} 
+              contract4_addr={contract4_addr} 
             />
             <OtherInfo 
               currentTime={currentTime} 
               signer={signer} 
               address={address} 
-              balanceOf={balanceOf} 
-              allowance={allowance} 
+              usdtBalanceOf={usdtBalanceOf} 
+              usdtAllowance={usdtAllowance} 
+              e2eBalanceOf={e2eBalanceOf} 
+              e2eAllowance={e2eAllowance} 
+              totalInfo={totalInfo} 
+              totalRaffleUsers={totalRaffleUsers} 
+              depositAddrs={depositAddrs} 
               getBalance={getBalance} 
               totalDeposits={totalDeposits} 
               totalWithdraws={totalWithdraws} 
               usersInfo={usersInfo} 
               contract1={contract1} 
               contract2={contract2} 
+              contract3={contract3} 
+              contract4={contract4} 
               contract1_addr={contract1_addr} 
-              contract2_addr={contract2_addr}
+              contract2_addr={contract2_addr} 
+              contract3_addr={contract3_addr} 
+              contract4_addr={contract4_addr} 
             />
           </>) : (
           <>
@@ -59,31 +77,45 @@ function Home({signer, address, balanceOf, allowance, getCurrentTime, getBalance
               currentTime={currentTime} 
               signer={signer} 
               address={address} 
-              balanceOf={balanceOf} 
-              allowance={allowance} 
+              loadWeb3Modal={loadWeb3Modal} 
+              usdtBalanceOf={usdtBalanceOf} 
+              usdtAllowance={usdtAllowance} 
+              e2eBalanceOf={e2eBalanceOf} 
+              e2eAllowance={e2eAllowance} 
               getBalance={getBalance} 
               totalDeposits={totalDeposits} 
               totalWithdraws={totalWithdraws} 
               usersInfo={usersInfo} 
               contract1={contract1} 
               contract2={contract2} 
+              contract3={contract3} 
+              contract4={contract4} 
               contract1_addr={contract1_addr} 
-              contract2_addr={contract2_addr}
+              contract2_addr={contract2_addr} 
+              contract3_addr={contract3_addr} 
+              contract4_addr={contract4_addr} 
             />
             <HowToStart 
               currentTime={currentTime} 
               signer={signer} 
               address={address} 
-              balanceOf={balanceOf} 
-              allowance={allowance} 
+              loadWeb3Modal={loadWeb3Modal} 
+              usdtBalanceOf={usdtBalanceOf} 
+              usdtAllowance={usdtAllowance} 
+              e2eBalanceOf={e2eBalanceOf} 
+              e2eAllowance={e2eAllowance} 
               getBalance={getBalance} 
               totalDeposits={totalDeposits} 
               totalWithdraws={totalWithdraws} 
               usersInfo={usersInfo} 
               contract1={contract1} 
               contract2={contract2} 
+              contract3={contract3} 
+              contract4={contract4} 
               contract1_addr={contract1_addr} 
-              contract2_addr={contract2_addr}
+              contract2_addr={contract2_addr} 
+              contract3_addr={contract3_addr} 
+              contract4_addr={contract4_addr} 
             />
           </>)
         }

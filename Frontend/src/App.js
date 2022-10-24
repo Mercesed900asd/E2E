@@ -27,9 +27,9 @@ const { ethers, BigNumber } = require("ethers");
 const DEBUG = true;
 const NETWORKCHECK = true;
 // const targetNetwork = NETWORKS.mainnet;
-const targetNetwork = NETWORKS.matic;
+const targetNetwork = NETWORKS.mumbai;
 // 🛰 providers
-if (DEBUG) console.log("📡 Connecting to Mainnet Matic");
+if (DEBUG) console.log("📡 Connecting to Mumbai Testnet");
 
 // Getting "failed to meet quorum" errors? Check your INFURA_ID
 // Your local provider is usually pointed at your local blockchain
@@ -135,7 +135,7 @@ function App() {
       window.location.reload();
     }, 1);
 
-    if(window.localStorage.getItem('CONNECTKEY')) {
+    if (window.localStorage.getItem('CONNECTKEY')) {
       window.localStorage.removeItem('CONNECTKEY');
     }
   };
@@ -162,26 +162,34 @@ function App() {
   const readContracts = useContractLoader(localProvider, contractConfig);
   const writeContracts = useContractLoader(userSigner, localProvider, localChainId);
 
-  const contract1_addr = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
-  const contract2_addr = "0xf35d2aeD0aA3b322AD3eB466790f954e9cD9b9B1";
+  const contract1_addr = "0x029db60Fc3A780cA5D0B442115294c48279bE481";
+  const contract2_addr = "0x7369A2a73BFb7a4d49B484a0E93090e2D0B8F10d";
+  const contract3_addr = "0x7A28B51D53B24B97E1f9680cFC413692000562ba";
+  const contract4_addr = "0x77480eA1bA300533D02c89504b36114e0B245673";
 
-  const balanceof = useContractReader(readContracts, "UChildAdministrableERC20", "balanceOf", [address]);
-  const allowanced = useContractReader(readContracts, "UChildAdministrableERC20", "allowance", [address, contract2_addr]);
+  const usdtBalanceof = useContractReader(readContracts, "USDT", "balanceOf", [address]);
+  const usdtAllowanced = useContractReader(readContracts, "USDT", "allowance", [address, contract1_addr]);
+  const e2eBalanceof = useContractReader(readContracts, "E2ECoin", "balanceOf", [address]);
+  const e2eAllowanced = useContractReader(readContracts, "E2ECoin", "allowance", [address, contract2_addr]);
 
-  const getcurrenttime = useContractReader(readContracts, "DownloadUSDC", "getCurrentTime");
-  const getbalance = useContractReader(readContracts, "DownloadUSDC", "getBalance");
-  const totaldeposits = useContractReader(readContracts, "DownloadUSDC", "totalDeposits");
-  const totalwithdraws = useContractReader(readContracts, "DownloadUSDC", "getTotalWithdraws");
-  const usersinfo = useContractReader(readContracts, "DownloadUSDC", "users", [address]);
-
-  const [balanceOf, setBalanceOf] = useState(0);
-  const [allowance, setAllowance] = useState(0);
+  const getcurrenttime = useContractReader(readContracts, "EarningCycle", "getCurrentTime");
+  const totalinfo = useContractReader(readContracts, "EarningCycle", "totalInfo");
+  const totalraffleusers = useContractReader(readContracts, "RaffleCampaign", "totalUsers");
+  const depositaddrs = useContractReader(readContracts, "EarningCycle", "depositAddrs");
+  const usersinfo = useContractReader(readContracts, "EarningCycle", "users", [address]);
+ 
+  const [usdtBalanceOf, setUsdtBalanceOf] = useState(0);
+  const [usdtAllowance, setUsdtAllowance] = useState(0);
+  const [e2eBalanceOf, setE2eBalanceOf] = useState(0);
+  const [e2eAllowance, setE2eAllowance] = useState(0);
 
   const [getCurrentTime, setGetCurrentTime] = useState(0);
-  const [getBalance, setGetBalance] = useState(0);
-  const [totalDeposits, setTotalDeposits] = useState(0);
-  const [totalWithdraws, setTotalWithdraws] = useState(0);
+  const [totalInfo, setTotalInfo] = useState({});
+  const [totalRaffleUsers, setTotalRaffleUsers] = useState(0);
+
   const [usersInfo, setUsersInfo] = useState({});
+  const [depositAddrs, setDepositAddrs] = useState([]);
+
 
   useEffect(() => {
     if (getcurrenttime) {
@@ -190,34 +198,40 @@ function App() {
   }, [getcurrenttime]);
 
   useEffect(() => {
-    if (balanceof) {
-      setBalanceOf(Number(balanceof));
+    if (totalinfo) {
+      setTotalInfo(totalinfo);
     }
-  }, [balanceof]);
+  }, [totalinfo]);
 
   useEffect(() => {
-    if (allowanced) {
-      setAllowance(Number(allowanced));
+    if (totalraffleusers) {
+      setTotalRaffleUsers(Number(totalraffleusers));
     }
-  }, [allowanced]);
+  }, [totalraffleusers]);
 
   useEffect(() => {
-    if (getbalance) {
-      setGetBalance(Number(getbalance));
+    if (usdtBalanceof) {
+      setUsdtBalanceOf(Number(usdtBalanceof));
     }
-  }, [getbalance]);
+  }, [usdtBalanceof]);
 
   useEffect(() => {
-    if (totaldeposits) {
-      setTotalDeposits(Number(totaldeposits));
+    if (usdtAllowanced) {
+      setUsdtAllowance(Number(usdtAllowanced));
     }
-  }, [totaldeposits]);
+  }, [usdtAllowanced]);
 
   useEffect(() => {
-    if (totalwithdraws) {
-      setTotalWithdraws(Number(totalwithdraws));
+    if (e2eBalanceof) {
+      setE2eBalanceOf(Number(e2eBalanceof));
     }
-  }, [totalwithdraws]);
+  }, [e2eBalanceof]);
+
+  useEffect(() => {
+    if (e2eAllowanced) {
+      setE2eAllowance(Number(e2eAllowanced));
+    }
+  }, [e2eAllowanced]);
 
   useEffect(() => {
     if (usersinfo) {
@@ -225,10 +239,16 @@ function App() {
     }
   }, [usersinfo]);
 
+  useEffect(() => {
+    if (depositaddrs) {
+      setDepositAddrs(depositaddrs);
+    }
+  }, [depositaddrs]);
   
+
   // console.log("@@@@@@@@@@@@@@@@", balanceOf);
   // console.log("@@@@@@@@@@@@@@@@", allowance);
-  
+
   // console.log("@@@@@@@@@@@@@@@@", getCurrentTime);
   // console.log("@@@@@@@@@@@@@@@@", getBalance);
   // console.log("@@@@@@@@@@@@@@@@", totalDeposits);
@@ -236,7 +256,7 @@ function App() {
   // console.log("@@@@@@@@@@@@@@@@", Number(usersInfo.deposits));
   // console.log("@@@@@@@@@@@@@@@@", usersInfo.referrer);
 
-  
+
   //
   // 🧫 DEBUG 👨🏻‍🔬
   //
@@ -374,26 +394,33 @@ function App() {
   return (
     <>
       <div className="total marginAuto">
-        <Header 
+        <Header
           address={address}
           loadWeb3Modal={loadWeb3Modal}
           web3Modal={web3Modal}
           logoutOfWeb3Modal={logoutOfWeb3Modal}
         />
-        <Home 
+        <Home
           signer={userSigner} 
           address={address} 
-          balanceOf={balanceOf} 
-          allowance={allowance} 
+          loadWeb3Modal={loadWeb3Modal} 
+          usdtBalanceOf={usdtBalanceOf} 
+          usdtAllowance={usdtAllowance} 
+          e2eBalanceOf={e2eBalanceOf} 
+          e2eAllowance={e2eAllowance} 
           getCurrentTime={getCurrentTime} 
-          getBalance={getBalance} 
-          totalDeposits={totalDeposits} 
-          totalWithdraws={totalWithdraws} 
+          totalInfo={totalInfo} 
+          totalRaffleUsers={totalRaffleUsers} 
+          depositAddrs={depositAddrs} 
           usersInfo={usersInfo} 
-          contract1={readContracts["UChildAdministrableERC20"]} 
-          contract2={readContracts["DownloadUSDC"]} 
+          contract1={readContracts["USDT"]} 
+          contract2={readContracts["E2ECoin"]} 
+          contract3={readContracts["EarningCycle"]} 
+          contract4={readContracts["RaffleCampaign"]} 
           contract1_addr={contract1_addr} 
-          contract2_addr={contract2_addr}
+          contract2_addr={contract2_addr} 
+          contract3_addr={contract3_addr} 
+          contract4_addr={contract4_addr} 
         />
         <Footer />
         {networkDisplay}

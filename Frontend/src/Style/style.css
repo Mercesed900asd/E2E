@@ -1,7 +1,7 @@
 .total {
     background-color: #FFFFFF;
     width: 90%;
-    max-width: 800px;
+    max-width: 1300px;
 }
 
 .navbar {
@@ -88,7 +88,8 @@
     top: 60px;
     width: 60%;
     margin: 0 auto;
-    border: 3px solid #4EC48F;
+    border: 2px solid #4EC48F;
+    background-color: #4EC48F;
 }
 
 .ellipse-icon-section {
@@ -137,6 +138,7 @@
     width: 60%;
     margin: 0 auto;
     border: 2px solid #4EC48F;
+    background-color: #4EC48F;
 }
 
 .non-ellipse-icon-section {
@@ -164,6 +166,91 @@
     align-items: center;
 }
 
+.outer-modal {
+    background: rgba(212, 237, 227);
+    padding: 20px 90px 70px;
+    border-radius: 20px;
+}
+
+.close-button {
+    position: relative;
+    top: -25px;
+    left: 270px;
+    background: transparent;
+    border: none;
+}
+
+.deposit-modal, .withdraw-modal, .upgrade-modal {
+    background: linear-gradient(white, white) padding-box, linear-gradient(to bottom, #4EC48F, #000000) border-box;
+    border-radius: 20px;
+    border: 5px solid transparent;
+    width: 230px;
+}
+
+.deposit-letter {
+    color: #26CC18;
+    border-bottom: 3px solid #26CC18;
+    text-shadow: 1px 1px 2px black;
+}
+
+.amount-letter, .usdt-letter {
+    color: #45AF7F;
+}
+
+.amount-div {
+    border: 2px solid #4DC38E;
+    width: 50%;
+}
+
+.withdraw-letter {
+    color: #CF0707;
+    border-bottom: 3px solid #CF0707;
+    text-shadow: 1px 1px 2px black;
+}
+
+.withdraw-rank-level {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.rank-level-title {
+    width: 68%;
+}
+
+.rank-level-content {
+    width: 30%;
+    /* border-color: transparent;
+    border-bottom: 1px solid black; */
+}
+
+/* .input-div {
+    border: 2px solid #4DC38E;
+    width: 50%;
+} */
+
+.upgrade-letter {
+    color: #0335A5;
+    border-bottom: 3px solid #0335A5;
+    text-shadow: 1px 1px 2px black;
+}
+
+.upgrade-rank-available {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.rank-available-title {
+    width: 68%;
+}
+
+.rank-available-content {
+    width: 30%;
+    /* border-color: transparent;
+    border-bottom: 1px solid black; */
+}
+
 .info-section {
     background: linear-gradient(white, white) padding-box, linear-gradient(to bottom, #4EC48F, #000000) border-box;
     border-radius: 20px;
@@ -187,6 +274,7 @@
 
 .info-letter2 {
     width: 65%;
+    overflow-wrap: anywhere;
 }
 
 .basic-button-section {
@@ -199,42 +287,69 @@
     background: linear-gradient(white, white) padding-box, linear-gradient(to top, #26CC18, #000000) border-box;
     border-radius: 10px;
     border: 4px solid transparent;
-    width: 10em;
+    width: 11em;
 }
 
 .withdraw-div {
     background: linear-gradient(white, white) padding-box, linear-gradient(to top, #CF0707, #000000) border-box;
     border-radius: 10px;
     border: 4px solid transparent;
-    width: 10em;
+    width: 11em;
 }
 
 .upgrade-div {
     background: linear-gradient(white, white) padding-box, linear-gradient(to top, #0335A5, #000000) border-box;
     border-radius: 10px;
     border: 4px solid transparent;
-    width: 10em;
+    width: 11em;
 }
 
 .deposit-button {
     background-color: #26CC18;
     border: none;
     text-decoration: underline;
-    width: 100%;
+    width: 102%;
+    margin-left: -1%;
+    margin-bottom: -1%;
+    border-radius: 8px;
 }
 
 .withdraw-button {
     background-color: #CF0707;
     border: none;
     text-decoration: underline;
-    width: 100%;
+    width: 102%;
+    margin-left: -1%;
+    margin-bottom: -1%;
+    border-radius: 8px;
 }
 
 .upgrade-button {
     background-color: #0335A5;
     border: none;
     text-decoration: underline;
-    width: 100%;
+    width: 102%;
+    margin-left: -1%;
+    margin-bottom: -1%;
+    border-radius: 8px;
+}
+
+.visibility-block {
+    visibility: block;
+    width: 70px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.08);;
+    color: #0335A5;
+    border-radius: 15px;
+}
+
+.visibility-hidden {
+    visibility: hidden;
+    width: 70px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #0335A5;
+    border-radius: 15px;
 }
 
 .four-status-section {
@@ -257,28 +372,28 @@
 }
 
 .four-status-div1 div:nth-child(1) {
-    height: 63%;
+    height: 66%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .four-status-div2 div:nth-child(1) {
-    height: 63%;
+    height: 66%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .four-status-div3 div:nth-child(1) {
-    height: 63%;
+    height: 66%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .four-status-div4 div:nth-child(1) {
-    height: 63%;
+    height: 66%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -299,10 +414,16 @@
 .latest-deposit-title {
     background-color: #26CC18;
     border-radius: 5px;
+    width: 102%;
+    margin-left: -1%;
+    margin-top: -1%;
+    border-radius: 8px;
 }
 
 .latest-deposit-content {
     padding: 20px 10px;
+    height: 200px;
+    width: 260px;
 }
 
 .deposit-addresses,
@@ -321,10 +442,16 @@
 .latest-withdrawl-title {
     background-color: #CF0707;
     border-radius: 5px;
+    width: 102%;
+    margin-left: -1%;
+    margin-top: -1%;
+    border-radius: 8px;
 }
 
 .latest-withdrawl-content {
     padding: 20px 10px;
+    height: 200px;
+    width: 260px;
 }
 
 .inr-section {
@@ -349,31 +476,31 @@
 .three-status-div3 {
     background-color: #57D99F;
     border: 2px solid #4EC48F;
-    width: 9em;
+    width: 10em;
 }
 
 .three-status-div2 {
     background-color: #1C2F36;
     border: 2px solid #1C2F36;
-    width: 9em;
+    width: 10em;
 }
 
 .three-status-div1 div:nth-child(1) {
-    height: 63%;
+    height: 64%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .three-status-div2 div:nth-child(1) {
-    height: 63%;
+    height: 64%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .three-status-div3 div:nth-child(1) {
-    height: 63%;
+    height: 64%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -392,10 +519,10 @@
 }
 
 .level-table tr td {
-    border: 2px;
+    /* border: 1px; */
     border-style: none solid solid none;
-    padding: 10px;
-    font-size: 10px;
+    padding: 5px;
+    font-size: 16px;
     font-weight: bold;
 }
 
@@ -446,6 +573,14 @@
     align-items: center;
 }
 
+tbody {
+    height: 200px;
+}
+
+tbody td {
+    vertical-align: text-top;
+}
+
 .deposit-table {
     border-spacing: 0;
     background: linear-gradient(white, white) padding-box, linear-gradient(to bottom, #26CC18, #000000) border-box;
@@ -456,8 +591,8 @@
 
 .deposit-table tr td {
     border: 2px;
-    padding: 10px;
-    font-size: 10px;
+    padding: 17px;
+    font-size: 12px;
     font-weight: bold;
 }
 
@@ -476,8 +611,8 @@
 
 .withdrawal-table tr td {
     border: 2px;
-    padding: 10px;
-    font-size: 10px;
+    padding: 17px;
+    font-size: 12px;
     font-weight: bold;
 }
 
@@ -604,7 +739,16 @@
         margin: 0 auto;
     }
 
-    .info-letter2 {
-        overflow-wrap: anywhere;
+    .outer-modal {
+        padding: 10px 62px 60px;
+    }
+    
+    .close-button {
+        top: -20px;
+        left: 235px;
+    }
+    
+    .deposit-modal, .withdraw-modal, .upgrade-modal {
+        width: 220px;
     }
 }

@@ -10,7 +10,7 @@ function Header({ address, loadWeb3Modal, web3Modal, logoutOfWeb3Modal }) {
                 <div className="logo-banner">
                     <Link to="/" className="logo">
                         <div className="logo-section">
-                            <img className="logo-img" src="/assets/images/e2e.png" alt="logo" width="190" height="90" />
+                            <img className="logo-img" src="/assets/images/e2e.png" alt="logo" width="190" height="90" onClick={logoutOfWeb3Modal} />
                         </div>
                     </Link>
                 </div>
@@ -22,7 +22,7 @@ function Header({ address, loadWeb3Modal, web3Modal, logoutOfWeb3Modal }) {
                             </div>
                             :
                             <div className="wallet-connect alignCenter">
-                                <button className="common-button cursorPointer t-family t-black fs-18" onClick={loadWeb3Modal}>CONNECT</button>
+                                <button className="common-button cursorPointer t-family t-black fs-20" onClick={loadWeb3Modal}>Connect</button>
                             </div>
                     }
                 </div>

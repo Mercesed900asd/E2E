@@ -81,6 +81,10 @@ code {
 	color: rgba(255, 253, 238, 0.5);
 }
 
+.t-blue {
+	color: #0335A5;
+}
+
 .t-family {
 	font-family: 'Inter';
 	font-style: normal;
@@ -404,6 +408,14 @@ code {
 
 .fs-45 {
 	font-size: 45px;
+}
+
+.fs-50 {
+	font-size: 50px;
+}
+
+.fs-55 {
+	font-size: 55px;
 }
 
 .p-5 {
